@@ -1,114 +1,114 @@
 # Meet App
 
-## Project Overview
+## Objective
 
-The Meet app is a serverless, progressive web application (PWA) built with React, following a test-driven development (TDD) approach. It leverages the Google Calendar API to fetch upcoming events and provides users with a seamless experience, combining the benefits of serverless architecture and PWAs.
+Build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application utilizes the Google Calendar API to fetch upcoming events.
 
-## Key Features
+## Context
 
-### 1. Filter Events by City
+Serverless and PWAs have grown in popularity, providing benefits such as no backend maintenance, easy scalability, always availability, no cost for idle time, instant loading, offline support, push notifications, "add to home screen" prompt, responsive design, and cross-platform compatibility. The TDD approach ensures a focus on requirements and high-quality code.
+
+## The 5 Ws
+
+1. **Who** - Users of the Meet app, including individuals, friends, professional networks, and potential employers.
+2. **What** - A progressive web app with offline capabilities and a serverless backend developed using TDD.
+3. **When** - Users can access the app anytime to view upcoming events for a specific city, and recruiters can immediately review code on GitHub.
+4. **Where** - The server is serverless, hosted on a cloud provider (e.g., AWS), and the app is online, installable, and usable offline with responsiveness across devices.
+5. **Why** - Combining serverless, PWA, and TDD skills distinguishes the app, offering cloud infrastructure benefits, an excellent user experience, performance, quality code, and adequate test coverage. Data visualization enhances the app's appeal and insights.
+
+---
+
+### User Stories:
+
+#### Feature 2: Show/Hide Event Details
+- As a user,
+  - I should be able to collapse an event by default,
+  - So that I can have a clean and concise view of upcoming events.
 
 - As a user,
-- I should be able to filter events by city,
-- So that I can find and attend events in a specific location.
-
-### 2. Show/Hide Event Details
+  - I should be able to expand an event to see details,
+  - So that I can get more information about a specific event.
 
 - As a user,
-- I should be able to see event elements collapsed by default,
-- So that I can have a concise overview of the events.
+  - I should be able to collapse an expanded event,
+  - So that I can hide the details and focus on other events.
+
+#### Feature 3: Specify Number of Events
+- As a user,
+  - I should see 32 events by default when I haven't specified a number,
+  - So that I can quickly view a reasonable number of events.
 
 - As a user,
-- I should be able to expand an event to see details,
-- So that I can access more information about a specific event.
+  - I should be able to change the number of events displayed,
+  - So that I can customize the view based on my preference.
+
+#### Feature 4: Use the App When Offline
+- As a user,
+  - I should see cached data when there's no internet connection,
+  - So that I can still access information even without an internet connection.
 
 - As a user,
-- I should be able to collapse an event to hide details,
-- So that I can focus on high-level event information and reduce clutter.
+  - I should see an error when changing search settings (city, number of events) offline,
+  - So that I am aware that my changes cannot be applied without an internet connection.
 
-#### Scenarios
-
-1. Event element is collapsed by default
-   - Given the user is on the events page
-   - When they view the list of events
-   - Then the event element should be collapsed by default
-
-2. User can expand an event to see details
-   - Given the user is on the events page
-   - When they click on a specific event
-   - Then the details of that event should be visible
-
-3. User can collapse an event to hide details
-   - Given the user is viewing the details of an expanded event
-   - When they choose to collapse the event
-   - Then the event details should be hidden
-
-### 3. Specify Number of Events
-
+#### Feature 5: Add an App Shortcut to the Home Screen
 - As a user,
-- I should see 32 events displayed by default when I haven't specified a number,
-- So that I have a reasonable default view of events.
+  - I should be able to install the Meet app as a shortcut on my device home screen,
+  - So that I can quickly access the app without going through the browser.
 
+#### Feature 6: Display Charts Visualizing Event Details
 - As a user,
-- I should be able to change the number of events displayed,
-- So that I can customize the app to show the desired amount of information.
+  - I should see a chart with the number of upcoming events in each city,
+  - So that I can easily understand the distribution of events across different cities.
 
-#### Scenarios
+### Gherkin Syntax:
 
-1. 32 events are shown by default when the user hasn’t specified a number
-   - Given the user is on the events page
-   - When they haven't specified the number of events to display
-   - Then 32 events should be shown by default
+#### Feature 2: Show/Hide Event Details
+```gherkin
+Given the Meet app is open,
+When I view the list of events,
+Then each event should be collapsed by default.
 
-2. User can change the number of events displayed
-   - Given the user is on the events page
-   - When they specify a different number of events to display
-   - Then the app should show the specified number of events
+Given I am viewing the details of an event,
+When I click on an event,
+Then the event details should be expanded.
 
-### 4. Use the App When Offline
+Given I am viewing the details of an event,
+When I click to collapse the event details,
+Then the event details should be hidden.
+```
 
-- As a user,
-- I should see cached data when there’s no internet connection,
-- So that I can still access previously viewed information even without an internet connection.
+### Feature 3: Specify Number of Events
+```gherkin
+Given the Meet app is open,
+When I haven't specified the number of events to display,
+Then I should see 32 events by default.
 
-- As a user,
-- I should see an error message when I change search settings (city, number of events) without internet connection,
-- So that I am aware that the changes cannot be applied due to the lack of internet connectivity.
+Given I am viewing the list of events,
+When I change the number of events to display to 10,
+Then I should see 10 events in the list.
+```
 
-#### Scenarios
+### Feature 4: Use the App When Offline
+```gherkin
+Given I have opened the Meet app with an internet connection,
+When I go offline,
+Then the app should show cached data.
 
-1. Show cached data when there’s no internet connection
-   - Given the user has previously accessed the events page with an internet connection
-   - When the user goes offline
-   - Then the app should display the previously cached data
+Given I am offline,
+When I try to change the search settings (city, number of events),
+Then I should see an error indicating the need for an internet connection.
+```
 
-2. Show error when user changes search settings (city, number of events) without internet connection
-   - Given the user is on the events page with no internet connection
-   - When the user attempts to change search settings (city, number of events)
-   - Then the app should show an error message indicating the lack of internet connectivity
+### Feature 5: Add an App Shortcut to the Home Screen
+```gherkin
+Given I have the Meet app open on my device,
+When I choose to install the app shortcut,
+Then the app should be added to my device's home screen.
+```
 
-### 5. Add an App Shortcut to the Home Screen
-
-- As a user,
-- I should be able to install the meet app as a shortcut on my device home screen,
-- So that I can quickly access the app without navigating through other menus.
-
-#### Scenarios
-
-1. User can install the meet app as a shortcut on their device home screen
-   - Given the user is on the app's homepage
-   - When they choose to install the app shortcut
-   - Then a shortcut to the app should be added to the device home screen
-
-### 6. Display Charts Visualizing Event Details
-
-- As a user,
-- I should see a chart with the number of upcoming events in each city,
-- So that I can visually understand the distribution of events across different locations.
-
-#### Scenarios
-
-1. Show a chart with the number of upcoming events in each city
-   - Given the user is on the events page
-   - When they view the chart section
-   - Then a chart should be displayed showing the number of upcoming events in each city
+### Feature 6: Display Charts Visualizing Event Details
+```gherkin
+Given the Meet app is open,
+When I view the charts section,
+Then I should see a chart displaying the number of upcoming events in each city.
