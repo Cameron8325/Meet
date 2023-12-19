@@ -114,7 +114,14 @@ When I view the charts section,
 Then I should see a chart displaying the number of upcoming events in each city.
 ```
 
-## Serverless Integration
+## Serverless Functionality
 
-The Meet app utilizes serverless technology, powered by AWS Lambda, to handle backend tasks efficiently. This approach ensures seamless scalability based on user demand, cost-effectiveness by paying only for actual usage, simplified development without server management hassles, and real-time data updates for a responsive user experience.
+The Meet app employs serverless functions, utilizing AWS Lambda, for critical backend processes. Specifically, serverless functions handle data fetching from the Google Calendar API and execute authorization tasks. By offloading these functions to a serverless architecture, the app ensures efficient scalability, eliminates backend maintenance concerns, and takes advantage of cost-effective computing.
 
+### Key Serverless Functions:
+
+1. **Data Fetching:** AWS Lambda functions will fetch data from the Google Calendar API, ensuring real-time and up-to-date information for users.
+
+2. **Authorization Server:** Instead of a traditional backend, serverless functions handle OAuth2 authentication flow, providing a secure and reliable authorization process.
+
+This serverless approach aligns with the app's goals of seamless scalability, reduced maintenance overhead, and cost-effectiveness, allowing the development team to focus on delivering a high-quality user experience.
