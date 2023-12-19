@@ -112,3 +112,9 @@ Then the app should be added to my device's home screen.
 Given the Meet app is open,
 When I view the charts section,
 Then I should see a chart displaying the number of upcoming events in each city.
+```
+
+## Serverless Integration
+
+The Meet app utilizes serverless technology, powered by AWS Lambda, to handle backend tasks efficiently. This approach ensures seamless scalability based on user demand, cost-effectiveness by paying only for actual usage, simplified development without server management hassles, and real-time data updates for a responsive user experience.
+
