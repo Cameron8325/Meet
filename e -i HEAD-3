@@ -1,0 +1,19 @@
+[33mcommit 480e816708f50733bc4f19e1e554cc4665e151ac[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Cameron8325 <140201247+Cameron8325@users.noreply.github.com>
+Date:   Wed Dec 20 14:48:21 2023 -0500
+
+    Revert "Added config.json"
+    
+    This reverts commit 03cadcd7f38cef2b0e14c6d9f4912f11c6c7ef22.
+
+[33mcommit 03cadcd7f38cef2b0e14c6d9f4912f11c6c7ef22[m
+Author: Cameron8325 <140201247+Cameron8325@users.noreply.github.com>
+Date:   Wed Dec 20 14:43:42 2023 -0500
+
+    Added config.json
+
+[33mcommit 9d5ccee127a97861071ccddc2ebb5101c9a0d0b3[m
+Author: Cameron8325 <140201247+Cameron8325@users.noreply.github.com>
+Date:   Wed Dec 20 14:43:18 2023 -0500
+
+    Added to gitignore
