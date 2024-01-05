@@ -21,6 +21,7 @@ describe("<Event /> component", () => {
     const detailsButton = eventComponent.queryByRole("button");
     expect(detailsButton).toBeInTheDocument();
     expect(detailsButton).toHaveClass('details-button');
+    expect(eventComponent.queryByRole("button")).toHaveTextContent("Show Details");
   });
 
   test("renders event title, start time, location, and show details button", () => {
@@ -46,7 +47,9 @@ describe("<Event /> component", () => {
   test("Hides the details section when the user clicks on Hide Details button", async () => {
     const user = userEvent.setup();
     await user.click(eventComponent.getByText("Show Details"));
+    expect(eventComponent.queryByRole("button")).toHaveTextContent("Hide Details");
     await user.click(eventComponent.getByText("Hide Details"));
+    expect(eventComponent.queryByRole("button")).toHaveTextContent("Show Details");
     expect(eventComponent.queryByText(mockEvent.description)).not.toBeInTheDocument();
   });
 });
