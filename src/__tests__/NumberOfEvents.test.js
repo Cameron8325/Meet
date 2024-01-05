@@ -25,7 +25,7 @@ describe('<NumberOfEvents /> component', () => {
     const textBox = NumberOfEventsComponent.queryByRole('textbox');
     await user.click(textBox);
     await user.type(textBox, '{backspace}{backspace}10');
-    await waitFor(() => {
+    waitFor(() => {
       expect(textBox.value).toBe('10');
     });
   });

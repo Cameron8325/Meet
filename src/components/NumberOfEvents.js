@@ -16,7 +16,7 @@ const NumberOfEvents = () => {
       <label htmlFor="numberOfEvents">Number of Events:</label>
       <input
         type="number"
-        id="numberOfEvents"
+        id="numberBox"
         value={numberOfEvents}
         onChange={handleInputChange}
         role='textbox'
