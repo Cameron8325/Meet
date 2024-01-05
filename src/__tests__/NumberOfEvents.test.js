@@ -30,6 +30,4 @@ describe('<NumberOfEvents /> component', () => {
     });
   });
 
-
-
 });
