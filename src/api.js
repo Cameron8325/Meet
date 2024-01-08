@@ -79,7 +79,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const response = await fetch(
-        "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT"
+        "https://aljbzhip67.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url"
       );
       const result = await response.json();
       const { authUrl } = result;
