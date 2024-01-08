@@ -20,7 +20,7 @@ describe("<Event /> component", () => {
   test("renders a button", () => {
     const detailsButton = eventComponent.queryByRole("button");
     expect(detailsButton).toBeInTheDocument();
-    expect(detailsButton).toHaveClass('details-button');
+    expect(detailsButton).toHaveClass('details-btn');
     expect(eventComponent.queryByRole("button")).toHaveTextContent("Show Details");
   });
 
