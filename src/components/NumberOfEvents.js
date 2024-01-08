@@ -15,6 +15,7 @@ const NumberOfEvents = () => {
     <div id="number-of-events">
       <label htmlFor="numberOfEvents">Number of Events:</label>
       <input
+      className='number-box'
         type="number"
         id="numberBox"
         value={numberOfEvents}
