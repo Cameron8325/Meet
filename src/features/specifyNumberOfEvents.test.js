@@ -1,5 +1,5 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { render, within, waitFor } from '@testing-library/react';
+import { render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 import NumberOfEvents from "../components/NumberOfEvents";
@@ -34,6 +34,7 @@ defineFeature(feature, test => {
 
     let AppComponent;
     let NumberOfEventsComponent;
+    let EventListItems;
 
     beforeEach(() => {
       NumberOfEventsComponent = render(<NumberOfEvents />);
@@ -51,14 +52,13 @@ defineFeature(feature, test => {
     });
 
     then('the user should see 10 events in the list', async () => {
-      const AppDom = AppComponent.container.firstChild;
-      const EventListDOM = AppDom.querySelector('#event-list');
-
+      const EventListDOM = screen.getByTestId("event-list");
+    
       await waitFor(() => {
         const EventListItems = within(EventListDOM).queryAllByRole('listitem');
         expect(EventListItems.length).toBe(10);
       });
     });
-
   });
+
 });
