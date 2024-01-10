@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-const NumberOfEvents = () => {
+const NumberOfEvents = ({ updateNumberOfEvents }) => {
   const [numberOfEvents, setNumberOfEvents] = useState(32);
 
   const handleInputChange = (e) => {
     // Ensure the value is a positive integer
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value) && value > 0) {
-      setNumberOfEvents(value);
+      // setNumberOfEvents(value);
+      updateNumberOfEvents(value);
     }
   };
 
