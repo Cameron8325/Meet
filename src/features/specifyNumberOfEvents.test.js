@@ -49,17 +49,27 @@ defineFeature(feature, test => {
     when('the user updates the number of events to display to 10', async () => {
       const user = userEvent.setup();
       const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box'));
+    
+      // Trigger the click and type events
       await user.click(textBox);
       await user.type(textBox, '{backspace}{backspace}10{enter}');
-      const AppDom = AppComponent.container.firstChild;
-      const EventListDOM = AppDom.querySelector('#event-list');
-      const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBe(10);
-
+    
+      // Wait for the value to be updated
+      await waitFor(() => {
+        expect(textBox.value).toBe('10');
+      });
     });
 
     then('the user should see 10 events in the updated event list', async () => {
+      // Wait for the App component to re-render with the updated events
+      await waitFor(() => {
+        const AppDom = AppComponent.container.firstChild;
+        const EventListDOM = AppDom.querySelector('#event-list');
+        const EventListItems = within(EventListDOM).queryAllByRole('listitem');
 
+        // Ensure that the number of rendered events matches the expected count (10)
+        expect(EventListItems.length).toBe(10);
+      });
     });
   });
 });
