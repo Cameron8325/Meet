@@ -48,14 +48,25 @@ defineFeature(feature, test => {
       const user = userEvent.setup();
       const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box'));
       await user.click(textBox);
-      await user.type(textBox, '{backspace}{backspace}10');
+      await user.type(textBox, '{backspace}{backspace}10{enter}');
       waitFor(() => {
         expect(textBox.value).toBe('10');
       });
     });
 
     then('the user should see 10 events in the updated event list', async () => {
+      NumberOfEventsComponent = render(<NumberOfEvents />);
+      const user = userEvent.setup();
+      const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box'));
+      await user.click(textBox);
+      await user.type(textBox, '{backspace}{backspace}10{enter}');
+      const AppDom = AppComponent.container.firstChild;
+      const EventListDOM = AppDom.querySelector('#event-list');
 
+      await waitFor(() => {
+        const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+        expect(EventListItems.length).toBe(10);
+      });
+    });
     });
   });
-});
