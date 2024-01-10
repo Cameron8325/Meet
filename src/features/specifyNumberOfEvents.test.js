@@ -9,14 +9,14 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 defineFeature(feature, test => {
 
   test('When user hasn’t specified a number, 32 events are shown by default.', ({ given, when, then }) => {
-
     let AppComponent;
+
     given('the Meet app is open', () => {
       AppComponent = render(<App />);
     });
 
     when('the user opens the app', () => {
-      // Nothing specific needs to be done here, as it's covered in the 'given' step
+      // No specific action needed, covered in 'given'
     });
 
     then('the user should see 32 events by default', async () => {
@@ -31,27 +31,26 @@ defineFeature(feature, test => {
   });
 
   test('User can change the number of events displayed.', ({ given, when, then }) => {
-
     let AppComponent;
     let NumberOfEventsComponent;
-    let EventListItems;
 
     beforeEach(() => {
       NumberOfEventsComponent = render(<NumberOfEvents />);
     });
 
-    given('the user is viewing the list of events', () => {
+    given('the user is viewing the list of events with the default number set to 32', () => {
       AppComponent = render(<App />);
+      // Ensure the default state is clear
     });
 
-    when('the user changes the number of events to display to 10', async () => {
+    when('the user updates the number of events to display to 10', async () => {
       const user = userEvent.setup();
       const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box'));
       await user.click(textBox);
       await user.type(textBox, '{backspace}{backspace}10');
     });
 
-    then('the user should see 10 events in the list', async () => {
+    then('the user should see 10 events in the updated event list', async () => {
       const EventListDOM = screen.getByTestId("event-list");
     
       await waitFor(() => {
@@ -60,5 +59,4 @@ defineFeature(feature, test => {
       });
     });
   });
-
 });
