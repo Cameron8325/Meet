@@ -38,7 +38,7 @@ defineFeature(feature, test => {
 
     beforeEach(() => {
       updateNumberOfEvents = jest.fn();
-      NumberOfEventsComponent = render(<NumberOfEvents updateNumberOfEvents={updateNumberOfEvents} />);
+      NumberOfEventsComponent = render(<NumberOfEvents  updateNumberOfEvents={updateNumberOfEvents} />);
     });
 
     given('the user is viewing the list of events with the default number set to 32', () => {
@@ -51,15 +51,16 @@ defineFeature(feature, test => {
       const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box'));
       await user.click(textBox);
       await user.type(textBox, '{backspace}{backspace}10{enter}');
-      const AppDom = AppComponent.container.firstChild;
-      const EventListDOM = AppDom.querySelector('#event-list');
-      const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBe(10);
-
     });
-
+    
     then('the user should see 10 events in the updated event list', async () => {
-
+      // Wait for the updated event list
+      await waitFor(() => {
+        const AppDom = AppComponent.container.firstChild;
+        const EventListDOM = AppDom.querySelector('#event-list');
+        const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+        expect(EventListItems.length).toBe(10);
+      });
+    });
     });
   });
-});
