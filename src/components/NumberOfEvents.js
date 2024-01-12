@@ -7,8 +7,8 @@ const NumberOfEvents = ({ updateNumberOfEvents }) => {
     // Ensure the value is a positive integer
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value) && value > 0) {
-      // setNumberOfEvents(value);
-      updateNumberOfEvents(value);
+      setNumberOfEvents(value);
+      updateNumberOfEvents(value, e);
     }
   };
 
@@ -16,12 +16,13 @@ const NumberOfEvents = ({ updateNumberOfEvents }) => {
     <div id="number-of-events">
       <label htmlFor="numberOfEvents">Number of Events:</label>
       <input
-      className='number-box'
+      className='number-box-input'
         type="number"
-        id="numberBox"
+        id="numberBoxInput"
         value={numberOfEvents}
         onChange={handleInputChange}
         role='textbox'
+        data-testid="number-of-events-input"
       />
     </div>
   );
