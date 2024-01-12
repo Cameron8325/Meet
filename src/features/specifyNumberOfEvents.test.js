@@ -48,7 +48,7 @@ defineFeature(feature, test => {
 
     when('the user updates the number of events to display to 10', async () => {
       const user = userEvent.setup();
-      const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box'));
+      const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box-input'));
       await user.click(textBox);
       await user.type(textBox, '{backspace}{backspace}10{enter}');
     });
