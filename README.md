@@ -85,8 +85,8 @@ When I haven't specified the number of events to display,
 Then I should see 32 events by default.
 
 Given I am viewing the list of events,
-When I change the number of events to display to 10,
-Then I should see 10 events in the list.
+When I update the number of events to display,
+Then I should see the specified number of events in the updated event list.
 ```
 
 ### Feature 4: Use the App When Offline
