@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
-  const handleInputChange = (e) => {
-    const value = parseInt(e.target.value, 10);
-    if (!isNaN(value) && value > 0) {
-      setCurrentNOE(value);
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+
+    if (isNaN(value)) {
+      setErrorAlert('Value must be a number.');
+    } else if (value > 50) {
+      setErrorAlert('The maximum value is 50');
+    } else if (value <= 0) {
+      setErrorAlert('Value must be atleast 1');
     } else {
-      // If the value is not a positive integer, set it to an empty string
-      setCurrentNOE(32);
+      setErrorAlert('');
+      setCurrentNOE(value);
     }
   };
 

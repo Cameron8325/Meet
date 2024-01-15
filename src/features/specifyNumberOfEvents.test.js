@@ -38,7 +38,7 @@ defineFeature(feature, test => {
 
     beforeEach(() => {
       setCurrentNOE = jest.fn();
-      NumberOfEventsComponent = render(<NumberOfEvents  setCurrentNOE={setCurrentNOE} />);
+      NumberOfEventsComponent = render(<NumberOfEvents  setCurrentNOE={() => {}}  setErrorAlert={() => {}} />);
     });
 
     given('the user is viewing the list of events with the default number set to 32', () => {
