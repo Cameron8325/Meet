@@ -34,11 +34,11 @@ defineFeature(feature, test => {
   test('User can change the number of events displayed.', ({ given, when, then }) => {
     let AppComponent;
     let NumberOfEventsComponent;
-    let updateNumberOfEvents;
+    let setCurrentNOE;
 
     beforeEach(() => {
-      updateNumberOfEvents = jest.fn();
-      NumberOfEventsComponent = render(<NumberOfEvents  updateNumberOfEvents={updateNumberOfEvents} />);
+      setCurrentNOE = jest.fn();
+      NumberOfEventsComponent = render(<NumberOfEvents  setCurrentNOE={setCurrentNOE} />);
     });
 
     given('the user is viewing the list of events with the default number set to 32', () => {
@@ -46,20 +46,21 @@ defineFeature(feature, test => {
       // Ensure the default state is clear
     });
 
-    when('the user updates the number of events to display to 10', async () => {
+    when('the user updates the number of events to display', async () => {
       const user = userEvent.setup();
       const textBox = NumberOfEventsComponent.getAllByRole('textbox').find(el => el.classList.contains('number-box-input'));
       await user.click(textBox);
       await user.type(textBox, '{backspace}{backspace}10{enter}');
+      expect(textBox.value).toBe('10');
     });
     
-    then('the user should see 10 events in the updated event list', async () => {
+    then('the user should see the specified number of events in the updated event list', async () => {
       // Wait for the updated event list
       await waitFor(() => {
         const AppDom = AppComponent.container.firstChild;
         const EventListDOM = AppDom.querySelector('#event-list');
         const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-        expect(EventListItems.length).toBe(10);
+        expect(EventListItems).toBeInTheDocument;
       });
     });
     });

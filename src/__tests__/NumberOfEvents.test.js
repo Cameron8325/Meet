@@ -7,8 +7,8 @@ describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsComponent;
 
   beforeEach(() => {
-    updateNumberOfEvents = jest.fn();
-    NumberOfEventsComponent = render(<NumberOfEvents  updateNumberOfEvents={updateNumberOfEvents} />);
+    setCurrentNOE = jest.fn();
+    NumberOfEventsComponent = render(<NumberOfEvents  setCurrentNOE={setCurrentNOE} />);
   });
 
   test('renders textbox element', () => {

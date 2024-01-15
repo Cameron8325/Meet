@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 
-const NumberOfEvents = ({ updateNumberOfEvents }) => {
-  const [numberOfEvents, setNumberOfEvents] = useState(32);
+const NumberOfEvents = ({ setCurrentNOE }) => {
 
   const handleInputChange = (e) => {
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value) && value > 0) {
-      setNumberOfEvents(value);
-      updateNumberOfEvents(value, e);
+      setCurrentNOE(value);
     } else {
       // If the value is not a positive integer, set it to an empty string
-      setNumberOfEvents('');
-      updateNumberOfEvents('', e);
+      setCurrentNOE(32);
     }
   };
 
@@ -22,7 +19,7 @@ const NumberOfEvents = ({ updateNumberOfEvents }) => {
       className='number-box-input'
         type="number"
         id="numberBoxInput"
-        value={numberOfEvents}
+        defaultValue={32}
         onChange={handleInputChange}
         role='textbox'
         data-testid="number-of-events-input"

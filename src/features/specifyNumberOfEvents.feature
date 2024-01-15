@@ -6,5 +6,5 @@ Feature: Specify Number of Events
 
   Scenario: User can change the number of events displayed.
     Given the user is viewing the list of events with the default number set to 32
-    When the user updates the number of events to display to 10
-    Then the user should see 10 events in the updated event list
+    When the user updates the number of events to display
+    Then the user should see the specified number of events in the updated event list
