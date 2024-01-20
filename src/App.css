@@ -97,11 +97,13 @@ input[type="number"] {
 
 @media (max-width: 768px) {
   .charts-container {
-  display: flex;
+    display: flex;
     flex-direction: column; /* Change to a single column layout */
-    grid-template-columns: none;
-}}
+  }
+}
+
 
 .charts-container {
+  display: grid;
   grid-template-columns: 1fr 1fr
 }
