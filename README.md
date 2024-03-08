@@ -125,3 +125,9 @@ The Meet app employs serverless functions, utilizing AWS Lambda, for critical ba
 2. **Authorization Server:** Instead of a traditional backend, serverless functions handle OAuth2 authentication flow, providing a secure and reliable authorization process.
 
 This serverless approach aligns with the app's goals of seamless scalability, reduced maintenance overhead, and cost-effectiveness, allowing the development team to focus on delivering a high-quality user experience.
+
+## Contributing
+
+Your contributions are invaluable in enriching my knowledge and fostering growth. I wholeheartedly invite your input and suggestions to enhance this project. Whether it's sharing insights, offering feedback, or proposing improvements, your collaboration is pivotal. Let's embark on this journey together, advancing our expertise in the realm of web development.
+
+---
